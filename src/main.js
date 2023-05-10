@@ -62,10 +62,10 @@ var game = {
         tile.classList.add('tile');
         if(number > 0){
             tile.innerHTML = number;
-            if(number <= 128){
+            if(number <= 2048){
                 tile.classList.add('x' + number.toString());
             }else{
-                tile.classList.add('x128');
+                tile.classList.add('x2048');
             }
         }
     },
@@ -77,7 +77,7 @@ var game = {
         
         //Slide
         for(i = 0;  i < row.length -1 ; i++){
-            if(row[i] == row[i + 1] && row[i] < 128){
+            if(row[i] == row[i + 1] && row[i] < 2048){
                 row[i] *= 2;
                 row[i + 1] = 0;
                 this.score += row[i];
@@ -106,6 +106,9 @@ var game = {
                 this.upadteTile(tile, number);
             }
         }
+        setTimeout(() => {
+            this.setTwo();
+        },250)
     },
     slideRight(){
         for(var r = 0; r < this.rows; r++){
@@ -120,6 +123,9 @@ var game = {
                 this.upadteTile(tile, number);
             }
         }
+        setTimeout(() => {
+            this.setTwo();
+        },250)
     },
     slideUp(){
         for(var c = 0; c < this.cols; c++){
@@ -137,6 +143,9 @@ var game = {
                 this.upadteTile(tile, number);
             }
         }
+        setTimeout(() => {
+            this.setTwo();
+        },250)
     },
     slideDown(){
         for(var c = 0; c < this.cols; c++){
@@ -156,6 +165,9 @@ var game = {
                 this.upadteTile(tile, number);
             }
         }
+        setTimeout(() => {
+            this.setTwo();
+        },250)
     },
     moveTile(){
         document.addEventListener('keyup', (e) => {
@@ -164,36 +176,24 @@ var game = {
                     this.slideLeft();
                     document.querySelector('#output').innerHTML = e.code
                 },100)
-                setTimeout(() => {
-                    this.setTwo();
-                },250)
             }
             else if(e.code == 'KeyD' || e.code == 'ArrowRight'){
                 setTimeout(() => {
                     this.slideRight();
                     document.querySelector('#output').innerHTML = e.code
                 },100)
-                setTimeout(() => {
-                    this.setTwo();
-                },250)
             }
             else if(e.code == 'KeyW' || e.code == 'ArrowUp'){
                 setTimeout(() => {
                     this.slideUp();
                     document.querySelector('#output').innerHTML = e.code
                 },100)
-                setTimeout(() => {
-                    this.setTwo();
-                },250)
             }
             else if(e.code == 'KeyS' || e.code == 'ArrowDown'){
                 setTimeout(() => {
                     this.slideDown();
                     document.querySelector('#output').innerHTML = e.code
                 },100)
-                setTimeout(() => {
-                    this.setTwo();
-                },250)
             }
         });
     },
@@ -216,12 +216,20 @@ var game = {
         while(!found){
             let r = Math.floor(Math.random() * this.rows);
             let c = Math.floor(Math.random() * this.cols);
-
             if(this.board[r][c] == 0){
-                this.board[r][c] = 2;
-                let tile = document.getElementById(r.toString() + '-' + c.toString());
-                tile.innerHTML = '2';
-                tile.classList.add('x2');
+                let rand = Math.round(Math.random());
+                if(rand == 0){
+                    this.board[r][c] = 2;
+                    let tile = document.getElementById(r.toString() + '-' + c.toString());
+                    tile.innerHTML = '2';
+                    tile.classList.add('x2');
+                }
+                if(rand == 1){
+                    this.board[r][c] = 4;
+                    let tile = document.getElementById(r.toString() + '-' + c.toString());
+                    tile.innerHTML = '4';
+                    tile.classList.add('x4');
+                }
                 found = true
             }
         }
