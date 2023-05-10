@@ -6,4 +6,8 @@
 2. Get as much score as possible.
 3. Compatible display on desktop only.
 
+## Play Now !
+
+Use this link [2048-Games](https://dendik-creation.github.io/128-javascript-games/)
+
 ## Thanks for playing
