@@ -4,7 +4,7 @@ window.onload = () => {
         document.querySelector('.gameplay').style.opacity = '1';
         game.init();
         loadGame();
-    },500)
+    },1000)
 }
 
 function loadGame(){
