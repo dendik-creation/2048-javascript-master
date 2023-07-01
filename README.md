@@ -8,6 +8,6 @@
 
 ## Play Now !
 
-Use this link [2048-Games](https://dendik-creation.github.io/2048-javascript-games/)
+Use this link [2048-Games](https://dendik-creation.github.io/2048-javascript-master/)
 
 ## Thanks for playing
